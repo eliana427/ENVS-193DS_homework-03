@@ -4,23 +4,39 @@ author: "Eliana Shandalov"
 format: html
 ---
 
-## Quarto
-
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
-
+Link to GitHub Repository: https://github.com/eliana427/ENVS-193DS_homework-03.git
 ```{r}
-1 + 1
+library(tidyverse)
+install.packages("here")
+library(here)
+library(flextable)
+library(janitor)
+install.packages("readxl")
+library(readxl)
 ```
 
-You can add options to executable code like this 
+Problem 1. Personal data
+
+a. Data summarizing
+
+I am comparing counts between groups, the "yes" on the phone group and the "no" on the phone group because I am comparing the number of minutes it takes me to walk to the IV tunnel from my house depending on if I am talking on the phone or not, which is informative because theoretically I think I walk slower when I am on the phone because I am less focused on walking. I will take the mean of each group and compare the means, while also taking the minimum and maximum, so the range will also be helpful, but I do not need to add numbers together unless it is part of my process for taking the means of each group.
+
+b. Visualization
 
 ```{r}
-#| echo: false
-2 * 2
+personal_data <- read_csv("personal.data.csv")   # read from sample data.csv data frame, store as object
+
+
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+```{r}
+ data_clean <- personal_data |> 
+  clean_names() # clean the names in the data, spaces to underscores and all lowercase
+```
+
+```{r}
+ggplot(data = personal_data,
+       aes(x = on_the_phone,
+           y = time_it_takes_me_to_walk_to_tunnel_min))
+```
+
