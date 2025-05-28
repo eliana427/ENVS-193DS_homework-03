@@ -10,7 +10,7 @@ editor:
 Link to GitHub Repository:
 https://github.com/eliana427/ENVS-193DS_homework-03.git
 
-```{r echo=FALSE}
+```{r message=FALSE, echo=FALSE}
 library(tidyverse)
 library(here)
 library(flextable)
@@ -33,7 +33,7 @@ on walking. I will take the median of each group, which will allow the data to n
 
 b.  Visualization
 
-```{r}
+```{r message=FALSE, echo=FALSE}
 library(janitor)
 my_data <- read_csv("my_data.csv")   # read from sample data.csv data frame, store as object
 
@@ -59,8 +59,7 @@ ggplot(data = clean_data, # use data frame clean_data
   scale_color_manual(values = c("firebrick4", "forestgreen")) # change colors of jittered  points/box plots
 ```
 
-**do not need this**
-```{r echo=FALSE}
+```{r message=FALSE, echo=FALSE}
 clean_data <- clean_data |> # fixing original data
   mutate(time_it_takes_me_to_walk_to_tunnel_min
          = as.numeric(time_it_takes_me_to_walk_to_tunnel_min)) # make r read data from this column as numerical values
@@ -94,14 +93,14 @@ data_summary # view the data summary in the console which displays all these val
 data_summary <- clean_data |> # use clean_data frame to create the object to summarize data
 group_by(on_the_phone) |> # group by yes or no on the phone
   summarize(
-    minimum = min(time_it_takes_me_to_walk_to_tunnel_min, na.rm = TRUE),
-    q1 = quantile(time_it_takes_me_to_walk_to_tunnel_min, 0.25, na.rm = TRUE),
-    median = median(time_it_takes_me_to_walk_to_tunnel_min, na.rm = TRUE),
-    q3 = quantile(time_it_takes_me_to_walk_to_tunnel_min, 0.75, na.rm = TRUE),
-    maximum = max(time_it_takes_me_to_walk_to_tunnel_min, na.rm = TRUE)
+    minimum = min(time_it_takes_me_to_walk_to_tunnel_min, na.rm = TRUE), # find the minimum
+    q1 = quantile(time_it_takes_me_to_walk_to_tunnel_min, 0.25, na.rm = TRUE), # find the first quantile (25%)
+    median = median(time_it_takes_me_to_walk_to_tunnel_min, na.rm = TRUE), # find the median
+    q3 = quantile(time_it_takes_me_to_walk_to_tunnel_min, 0.75, na.rm = TRUE), # find teh third quantile (75%)
+    maximum = max(time_it_takes_me_to_walk_to_tunnel_min, na.rm = TRUE) # find the maximum
   )
 
-data_summary
+data_summary # display the data summary
 ```
 
 c.  Caption
@@ -115,18 +114,18 @@ if I was not on the phone (red: no, green: yes).
 
 d.  Table presentation
 
-```{r}
+```{r warning=FALSE}
 data_summary_rounded <- data_summary |> # creating new object for rounded data
   mutate(across(c(minimum, q1, median, q3, maximum), round, digits = 1)) # rounding numbers in table to one decimal place
 
-ft <- flextable(head(data_summary_rounded),
-                col_keys = c("on_the_phone", "minimum", "q1", "median", "3", "maximum")) |> 
-  set_header_labels(mean = "Median", on_the_phone = "On the phone", q1 = "First quartile", q3 = "Third quartile", minimum = "Minimum", maximum = "Maximum") |> 
-  autofit()
+ft <- flextable(head(data_summary_rounded), # create flextable from the rounded data
+                col_keys = c("on_the_phone", "minimum", "q1", "median", "3", "maximum")) |> # make the column categories this variables 
+  set_header_labels(mean = "Median", on_the_phone = "On the phone", q1 = "First quartile", q3 = "Third quartile", minimum = "Minimum", maximum = "Maximum") |> # change the names of the columns in the flextable
+  autofit() # fit the flextable to the page
 
- ft <- set_caption(ft, caption = "Table 1: Walking Data Summary")
+ ft <- set_caption(ft, caption = "Table 1: Walking Data Summary") # add a table to the flextable
 
-ft
+ft # display the flextable
 ```
 
 Problem 2. Affective visualization
