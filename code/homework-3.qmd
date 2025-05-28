@@ -119,13 +119,17 @@ The statistical test used were a t-test and a Mann-Whitney U test. The response 
 
 ![Walk photo](/Users/elianashandalov/chart.png){width=30%}
 ![Walk photo](/Users/elianashandalov/legend.png){width=30%}
+**why is this not showing up? + rendering**
 
-
-Charts b and d from figure 3 are the charts that represent the data well.
+Figure 7 D represents the data well.
 
 b. Visual clarity
 
-This graph is clear because the x-axis and y-axis titles are large and easy to read, although the axes titles might be a little long. There is no title for the graph, but there is a legend (shown in separate image). The orange and blue dots are clear in their differentiation, but I think instead of circles for the supershedders there could have been a more different shape used.
+This graph is clear because the x-axis and y-axis titles are large and easy to read, although the axes titles might be a little long. There is no title for the graph, but there is a legend (shown in separate image) that is easy to follow to understand what's happening on the graph. The orange and blue dots are clear in their differentiation, but I think instead of circles for the supershedders there could have been a more different shape used.
+
+c. Aesthetic clarity
+
+The design looks good because the supershedders are shown at the beginning, and the other points are shown at the end of the curve. The axes ticks are proportionally spaced and the text is large and clear. The aesthetics are not too complicated, which is a good thing.
 
 
 
