@@ -92,9 +92,7 @@ ft <- flextable(head(data_summary_rounded),
   set_header_labels(mean = "Mean", on_the_phone = "On the phone", n = "Observations", df = "Degrees of freedom", tval = "T-value", margin = "Margin of error", sd = "Standard deviation", se = "Standard error", ci_lower = "95% CI lower", ci_higher = "95% CI higher") |> 
   autofit()
 
-print(ft, preview = "html")
-
-install.packages(xQuartz)
+ft
 ```
 
 
