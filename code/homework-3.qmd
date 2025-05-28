@@ -117,4 +117,10 @@ a. Revisit and summarize
 
 The statistical test used were a t-test and a Mann-Whitney U test. The response variable is the shed of the Marburg virus, and the predictor variable is based in the coinfection, testing if the bats are infected with only the Marburg virus (MARV), both Sosuga virus (SOSV) and MARV, or both Kasokero virus (KASV) and MARV.
 
-b
+b. Visual clarity
+
+![Walk photo](/Users/elianashandalov/charts.png){width=30%}
+Charts b and d from figure 3 are the charts that represent the data well.
+
+
+
