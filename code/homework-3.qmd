@@ -79,6 +79,7 @@ data_summary # view the data summary in the console which displays all these val
 ```
 
 c. Caption
+
 **Figure 1. Talking on the phone tends to make me take longer to walk to the IV tunnel from my house.** Data from 'my_data' package (Shandalov EB, 2025). Points represent observations of the time (minutes) it took me to walk to the IV tunnel and plotted based on whether I was on the phone or not (total n = 30). Colors represent if I was on the phone and if I was not on the phone (red: no, green: yes).
 
 d. Table presentation
@@ -107,9 +108,12 @@ b. Sketch
 **trouble rendering**
 
 c. 
-**revisit**
 
-d. **revisit**
+
+
+d. Artist statement
+
+In my piece, the shoe colored in at various points, I represented the minutes it took me to walk from home to the IV tunnel on the same route depending on if I am on the phone (green) or not on the phone (red), which I created by drawing on the bottom of a shoe. I was inspired by the creativity in Stefanie Posavec and Giorgia Lupi's Dear Data project, so I wanted to do something really creative as well. Lorraine Woodruff-Long's quilt inspired me to separate my data by different colors and correlate my placement to my data points.
 
 Problem 3. Statistical critique
 
@@ -119,7 +123,7 @@ The statistical test used were a t-test and a Mann-Whitney U test. The response 
 
 ![Walk photo](/Users/elianashandalov/chart.png){width=30%}
 ![Walk photo](/Users/elianashandalov/legend.png){width=30%}
-**why is this not showing up? + rendering**
+**rendering**
 
 Figure 7 D represents the data well.
 
