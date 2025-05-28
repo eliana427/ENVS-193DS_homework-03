@@ -7,12 +7,12 @@ format: html
 Link to GitHub Repository: https://github.com/eliana427/ENVS-193DS_homework-03.git
 ```{r}
 library(tidyverse)
-install.packages("here")
 library(here)
 library(flextable)
 library(janitor)
-install.packages("readxl")
 library(readxl)
+library(readr)
+library(dplyr)
 ```
 
 Problem 1. Personal data
@@ -27,42 +27,74 @@ b. Visualization
 library(janitor)
 my_data <- read_csv("my_data.csv")   # read from sample data.csv data frame, store as object
 
-
 ```
 
 ```{r}
-clean_data <- my_data %>% # store data as object to be cleaned, will be using clean data set
+clean_data <- my_data %>%  # store data as object to be cleaned, will be using clean data set
   clean_names() # clean the names in the data, spaces to underscores and all lowercase
+View(clean_data)
 ```
 
 ```{r}
-ggplot(data = clean_data,
-       aes(x = on_the_phone,
-           y = time_it_takes_me_to_walk_to_tunnel_min,
-           color = on_the_phone)) +
-  geom_boxplot() +
-  geom_jitter(position = position_jitter(width = 0.2,
-                                         height = 0)) +
-  labs(x = "On the phone (yes/no)",
-       y = "Time to walk to IV tunnel (minutes)",
-       color = "On the phone") +
-  scale_color_manual(values = c("firebrick4", "forestgreen"))
+ggplot(data = clean_data, # use data frame clean_data
+       aes(x = on_the_phone, # x-axis will be data from on_the_phone column
+           y = time_it_takes_me_to_walk_to_tunnel_min, # y-axis will be data from time_it_takes_me_to_walk_to_tunnel_min column
+           color = on_the_phone)) + # color based on yes or no in on_the_phone column
+  geom_boxplot() + # create a boxplot
+  geom_jitter(position = position_jitter(width = 0.2, # jitter the points with a horizontal distance of 0.2
+                                         height = 0)) + # no vertical jitter
+  labs(x = "On the phone (yes/no)", # name x-axis
+       y = "Time to walk to IV tunnel (minutes)", # name y-axis
+       color = "On the phone") + # name leegend
+  scale_color_manual(values = c("firebrick4", "forestgreen")) # change colors of jittered  points/box plots
 ```
 
 ```{r}
-mean__yes <- clean_data |> 
-  filter(on_the_phone == "Yes") |> 
-  summarize(mean_yes = mean(duration, na.rm = TRUE))
+clean_data <- clean_data |> # fixing original data
+  mutate(time_it_takes_me_to_walk_to_tunnel_min
+         = as.numeric(time_it_takes_me_to_walk_to_tunnel_min)) # make r read data from this column as numerical values
 
+mean_yes <- clean_data |> # create new object for when I am on the phone from clean_data frame
+  filter(on_the_phone == "Yes") |> # filter by when I am on the phone
+  summarize(mean_yes = mean(time_it_takes_me_to_walk_to_tunnel_min, na.rm = TRUE)) # take the mean of the time it takes me to walk to tunnel in minutes when I am on the phone
+
+mean_no <- clean_data |> # create new object for when I am not on the phone from clean_data frame
+  filter(on_the_phone == "No") |> # filter by when I am not on the phone
+  summarize(mean_no = mean(time_it_takes_me_to_walk_to_tunnel_min, na.rm = TRUE)) # take the mean of the time it takes me to walk to tunnel in minutes when I am not on the phone
+
+data_summary <- clean_data |> # use clean_data frame to create the object to summarize data
+group_by(on_the_phone) |> # group by yes or no on the phone
+  summarize(mean = mean(time_it_takes_me_to_walk_to_tunnel_min), # take the mean of both yes and no
+            n = length(time_it_takes_me_to_walk_to_tunnel_min), # count the number of values in each category to total the observations
+            df = n - 1, # degrees of freedom is the number of observations minus 1
+            sd = sd(time_it_takes_me_to_walk_to_tunnel_min), # find standard deviation of both categories
+            se = sd/sqrt(n), # find standard error of both categories using this formula
+            tval = qt(p = 0.05, df = df), # find the t-value for both categories
+            margin = tval*se, # find the margin of error for both categories
+            ci_lower = mean - tval*se, # find the lower bound confidence interval for both categories
+            ci_higher = mean + tval*se) # find the upper bound confidence interval for both categories
+
+data_summary # view the data summary in the console which displays all these values
 
 ```
 
+c. Caption
+**Figure 1. Talking on the phone tends to make me take longer to walk to the IV tunnel from my house.** Data from 'my_data' package (Shandalov EB, 2025). Points represent observations of the time (minutes) it took me to walk to the IV tunnel and plotted based on whether I was on the phone or not (total n = 30). Colors represent if I was on the phone and if I was not on the phone (red: no, green: yes).
+
+d. Table presentation
 
 ```{r}
-yes_phone <- c(20, 21, 20, 18, 18, 20, 18, 19, 19, 22, 21, 23, 22, 21)
-mean(yes_phone)
+data_summary_rounded <- data_summary |> 
+  mutate(across(c(mean, sd, se, tval, margin, ci_lower, ci_higher), round, digits = 1))
 
-no_phone <- c(19, 16, 15, 17, 23, 18, 19, 21, 21, 18, 15, 19, 18, 20, 22, 18)
-mean(no_phone)
+ft <- flextable(head(data_summary_rounded),
+                col_keys = c("on_the_phone", "mean", "n", "df", "sd", "se", "tval", "margin", "ci_lower", "ci_higher")) |> 
+  set_header_labels(mean = "Mean", on_the_phone = "On the phone", n = "Observations", df = "Degrees of freedom", tval = "T-value", margin = "Margin of error", sd = "Standard deviation", se = "Standard error", ci_lower = "95% CI lower", ci_higher = "95% CI higher") |> 
+  autofit()
+
+print(ft, preview = "html")
+
+install.packages(xQuartz)
 ```
+
 
