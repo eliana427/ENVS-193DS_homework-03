@@ -5,6 +5,7 @@ format: html
 ---
 
 Link to GitHub Repository: https://github.com/eliana427/ENVS-193DS_homework-03.git
+**correct link?**
 ```{r}
 library(tidyverse)
 library(here)
@@ -107,9 +108,8 @@ b. Sketch
 ![Walk photo](/Users/elianashandalov/shoevisualization.jpg){width=30%}
 **trouble rendering**
 
-c. 
-
-
+c. **insert photo of physical shoe**
+**is this a good idea?**
 
 d. Artist statement
 
