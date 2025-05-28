@@ -95,4 +95,11 @@ ft <- flextable(head(data_summary_rounded),
 ft
 ```
 
+Problem 2. Affective visualization
 
+a. Describe in words what an affective visualization could look like for your personal data
+
+I would choose a physical representation, such as a shoe, where I would mark my data points in different colors depending if I was on the phone or not. To match my box plot, I would choose red for when I'm not on the phone and green for when I am on the phone. An example of this could be a vans shoe, which has individual dots and diamonds on the bottom; I could place values that repeat next to each other, and I could include points proportionally to spread across the shoe because I have a range of 15-23 minutes. Including the confidence intervals would be helpful too because it provides more information and guides me in where I place the red and green colors.
+
+b. Sketch
+**include sketch**
