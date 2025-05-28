@@ -131,5 +131,9 @@ c. Aesthetic clarity
 
 The design looks good because the supershedders are shown at the beginning, and the other points are shown at the end of the curve. The axes ticks are proportionally spaced and the text is large and clear. The aesthetics are not too complicated, which is a good thing.
 
+D. Recommendations
+
+I would recommend making the axes titles shorter, for example by changing the word percentage to %. Adding a title would be helpful so we can look at the graph and know exactly what's going on. The supershedder shapes should be different shapes than circles to create more differentiation between that and the other points. Everything else on the graph looks pretty clear, so I don't think there's anything else I would change.
+
 
 
