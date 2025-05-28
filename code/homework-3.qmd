@@ -24,19 +24,45 @@ I am comparing counts between groups, the "yes" on the phone group and the "no" 
 b. Visualization
 
 ```{r}
-personal_data <- read_csv("personal.data.csv")   # read from sample data.csv data frame, store as object
+library(janitor)
+my_data <- read_csv("my_data.csv")   # read from sample data.csv data frame, store as object
 
 
 ```
 
 ```{r}
- data_clean <- personal_data |> 
+clean_data <- my_data %>% # store data as object to be cleaned, will be using clean data set
   clean_names() # clean the names in the data, spaces to underscores and all lowercase
 ```
 
 ```{r}
-ggplot(data = personal_data,
+ggplot(data = clean_data,
        aes(x = on_the_phone,
-           y = time_it_takes_me_to_walk_to_tunnel_min))
+           y = time_it_takes_me_to_walk_to_tunnel_min,
+           color = on_the_phone)) +
+  geom_boxplot() +
+  geom_jitter(position = position_jitter(width = 0.2,
+                                         height = 0)) +
+  labs(x = "On the phone (yes/no)",
+       y = "Time to walk to IV tunnel (minutes)",
+       color = "On the phone") +
+  scale_color_manual(values = c("firebrick4", "forestgreen"))
+```
+
+```{r}
+mean__yes <- clean_data |> 
+  filter(on_the_phone == "Yes") |> 
+  summarize(mean_yes = mean(duration, na.rm = TRUE))
+
+
+```
+
+
+```{r}
+yes_phone <- c(20, 21, 20, 18, 18, 20, 18, 19, 19, 22, 21, 23, 22, 21)
+mean(yes_phone)
+
+no_phone <- c(19, 16, 15, 17, 23, 18, 19, 21, 21, 18, 15, 19, 18, 20, 22, 18)
+mean(no_phone)
 ```
 
