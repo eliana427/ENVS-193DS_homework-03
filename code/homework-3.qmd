@@ -10,7 +10,7 @@ editor:
 Link to GitHub Repository:
 https://github.com/eliana427/ENVS-193DS_homework-03.git
 
-```{r}
+```{r echo=FALSE}
 library(tidyverse)
 library(here)
 library(flextable)
@@ -29,10 +29,7 @@ the "no" on the phone group because I am comparing the number of minutes
 it takes me to walk to the IV tunnel from my house depending on if I am
 talking on the phone or not, which is informative because theoretically
 I think I walk slower when I am on the phone because I am less focused
-on walking. I will take the median of each group and compare them which
-will allow the data to not be impacted by outliers, while also taking
-the minimum and maximum, so the range will also be helpful, but I do not
-need to add numbers together.
+on walking. I will take the median of each group, which will allow the data to not be impacted by outliers, and also the minimum, maximum, first quartile, and third tile of each group's walk times (minutes) and compare them.
 
 b.  Visualization
 
@@ -114,8 +111,7 @@ the IV tunnel from my house.** Data from 'my_data' package (Shandalov
 EB, 2025). Points represent observations of the time (minutes) it took
 me to walk to the IV tunnel and plotted based on whether I was on the
 phone or not (total n = 30). Colors represent if I was on the phone and
-if I was not on the phone (red: no, green: yes). **does this caption
-look correct**
+if I was not on the phone (red: no, green: yes).
 
 d.  Table presentation
 
@@ -132,11 +128,6 @@ ft <- flextable(head(data_summary_rounded),
 
 ft
 ```
-
-**should I take out variables I don't need from the table and from my
-code?**
-
-median, 25%, 75%, minimum, maximum
 
 Problem 2. Affective visualization
 
