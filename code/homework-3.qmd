@@ -8,8 +8,7 @@ editor:
 ---
 
 Link to GitHub Repository:
-https://github.com/eliana427/ENVS-193DS_homework-03.git **correct
-link?**
+https://github.com/eliana427/ENVS-193DS_homework-03.git
 
 ```{r}
 library(tidyverse)
@@ -46,7 +45,7 @@ my_data <- read_csv("my_data.csv")   # read from sample data.csv data frame, sto
 ```{r}
 clean_data <- my_data %>%  # store data as object to be cleaned, will be using clean data set
   clean_names() # clean the names in the data, spaces to underscores and all lowercase
-View(clean_data)
+View(clean_data) # view the new version of my data
 ```
 
 ```{r}
@@ -63,7 +62,8 @@ ggplot(data = clean_data, # use data frame clean_data
   scale_color_manual(values = c("firebrick4", "forestgreen")) # change colors of jittered  points/box plots
 ```
 
-```{r}
+**do not need this**
+```{r echo=FALSE}
 clean_data <- clean_data |> # fixing original data
   mutate(time_it_takes_me_to_walk_to_tunnel_min
          = as.numeric(time_it_takes_me_to_walk_to_tunnel_min)) # make r read data from this column as numerical values
@@ -92,6 +92,21 @@ data_summary # view the data summary in the console which displays all these val
 
 ```
 
+
+```{r}
+data_summary <- clean_data |> # use clean_data frame to create the object to summarize data
+group_by(on_the_phone) |> # group by yes or no on the phone
+  summarize(
+    minimum = min(time_it_takes_me_to_walk_to_tunnel_min, na.rm = TRUE),
+    q1 = quantile(time_it_takes_me_to_walk_to_tunnel_min, 0.25, na.rm = TRUE),
+    median = median(time_it_takes_me_to_walk_to_tunnel_min, na.rm = TRUE),
+    q3 = quantile(time_it_takes_me_to_walk_to_tunnel_min, 0.75, na.rm = TRUE),
+    maximum = max(time_it_takes_me_to_walk_to_tunnel_min, na.rm = TRUE)
+  )
+
+data_summary
+```
+
 c.  Caption
 
 **Figure 1. Talking on the phone tends to make me take longer to walk to
@@ -105,12 +120,12 @@ look correct**
 d.  Table presentation
 
 ```{r}
-data_summary_rounded <- data_summary |> 
-  mutate(across(c(mean, sd, se, tval, margin, ci_lower, ci_higher), round, digits = 1))
+data_summary_rounded <- data_summary |> # creating new object for rounded data
+  mutate(across(c(minimum, q1, median, q3, maximum), round, digits = 1)) # rounding numbers in table to one decimal place
 
 ft <- flextable(head(data_summary_rounded),
-                col_keys = c("on_the_phone", "mean", "n", "df", "sd", "se", "tval", "margin", "ci_lower", "ci_higher")) |> 
-  set_header_labels(mean = "Mean", on_the_phone = "On the phone", n = "Observations", df = "Degrees of freedom", tval = "T-value", margin = "Margin of error", sd = "Standard deviation", se = "Standard error", ci_lower = "95% CI lower", ci_higher = "95% CI higher") |> 
+                col_keys = c("on_the_phone", "minimum", "q1", "median", "3", "maximum")) |> 
+  set_header_labels(mean = "Median", on_the_phone = "On the phone", q1 = "First quartile", q3 = "Third quartile", minimum = "Minimum", maximum = "Maximum") |> 
   autofit()
 
  ft <- set_caption(ft, caption = "Table 1: Walking Data Summary")
@@ -120,6 +135,8 @@ ft
 
 **should I take out variables I don't need from the table and from my
 code?**
+
+median, 25%, 75%, minimum, maximum
 
 Problem 2. Affective visualization
 
@@ -139,10 +156,11 @@ the red and green colors.
 
 b.  Sketch
 
-![Walk photo](/Users/elianashandalov/shoevisualization.jpg){width="30%"}
-**trouble rendering**
+I spoke to An at office hours and she told me I didn't have to do a sketch because I already had my draft on the iPad; for the final affective visualization, I will be drawing on a physical shoe.
 
-c.  **insert photo of physical shoe** **is this a good idea?**
+c.
+
+![Walk photo](shoevisualization.jpg){width="30%"}
 
 d.  Artist statement
 
@@ -165,8 +183,8 @@ variable is based in the coinfection, testing if the bats are infected
 with only the Marburg virus (MARV), both Sosuga virus (SOSV) and MARV,
 or both Kasokero virus (KASV) and MARV.
 
-![Walk photo](/Users/elianashandalov/chart.png){width="30%"} ![Walk
-photo](/Users/elianashandalov/legend.png){width="30%"} **rendering**
+![Walk photo](chart.png){width="30%"} 
+![Walk photo](legend.png){width="30%"}
 
 Figure 7 D represents the data well.
 
