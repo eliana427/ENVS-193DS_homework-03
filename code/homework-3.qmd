@@ -10,10 +10,6 @@ execute:
   warning: false # use this to make sure warnings don't show up
 ---
 
-**readme stuff in video on canvas?** 
-**include setup?**
-**do you want html link listed here too?**
-
 Link to GitHub Repository:
 https://github.com/eliana427/ENVS-193DS_homework-03.git
 
@@ -29,9 +25,8 @@ library(readr)
 library(dplyr)
 ```
 
-<div style="font-size:30px; font-weight:bold;">Problem 1. Personal data</div>
 
-# Problem 1
+# Problem 1. Personal data
 
 ## a.  Data summarizing
 
@@ -139,11 +134,10 @@ ft <- flextable(head(data_summary_rounded), # create flextable from the rounded 
 ft # display the flextable
 ```
 
-<div style="font-size:30px; font-weight:bold;">Problem 2. Affective visualization</div>
 
-# Problem 2
+# Problem 2. Affective visualization
 
-a.  Describe in words what an affective visualization could look like
+## a.  Describe in words what an affective visualization could look like
     for your personal data
 
 I would choose a physical representation, such as a shoe, where I would
@@ -157,15 +151,15 @@ of 15-23 minutes. Including the confidence intervals would be helpful
 too because it provides more information and guides me in where I place
 the red and green colors.
 
-b.  Sketch
+## b.  Sketch
 
 I spoke to An at office hours and she told me I didn't have to do a sketch because I already had my draft on the iPad; for the final affective visualization, I will be drawing on a physical shoe.
 
-c.
+## c. Draft
 
 ![Walk photo](shoevisualization.jpg){width="30%"}
 
-d.  Artist statement
+## d.  Artist statement
 
 In my piece, the shoe colored in at various points, I represented the
 minutes it took me to walk from home to the IV tunnel on the same route
@@ -176,9 +170,9 @@ so I wanted to do something really creative as well. Lorraine
 Woodruff-Long's quilt inspired me to separate my data by different
 colors and correlate my placement to my data points.
 
-<div style="font-size:30px; font-weight:bold;">Problem 3. Statistical critique</div>
+# Problem 3. Statistical critique
 
-a.  Revisit and summarize
+## a.  Revisit and summarize
 
 The statistical test used were a t-test and a Mann-Whitney U test. The
 response variable is the shed of the Marburg virus, and the predictor
@@ -191,7 +185,7 @@ or both Kasokero virus (KASV) and MARV.
 
 Figure 7 D represents the data well.
 
-b.  Visual clarity
+## b.  Visual clarity
 
 This graph is clear because the x-axis and y-axis titles are large and
 easy to read, although the axes titles might be a little long. There is
@@ -201,14 +195,14 @@ orange and blue dots are clear in their differentiation, but I think
 instead of circles for the supershedders there could have been a more
 different shape used.
 
-c.  Aesthetic clarity
+## c.  Aesthetic clarity
 
 The design looks good because the supershedders are shown at the
 beginning, and the other points are shown at the end of the curve. The
 axes ticks are proportionally spaced and the text is large and clear.
 The aesthetics are not too complicated, which is a good thing.
 
-d. Recommendations
+## d. Recommendations
 
 I would recommend making the axes titles shorter, for example by
 changing the word percentage to %. Adding a title would be helpful so we
