@@ -1,14 +1,8 @@
 ---
-title: "Homework-3"
-author: "Eliana Shandalov"
-date: "May 28, 2025"
-format:
-  html:
-    toc: true # use this to display a table of contents
-execute:
-  message: false # use this to make sure messages don't show up
-  warning: false # use this to make sure warnings don't show up
+title: "homework-03"
+format: html
 ---
+
 
 **readme stuff in video on canvas?** 
 **include setup?**
@@ -17,9 +11,7 @@ execute:
 Link to GitHub Repository:
 https://github.com/eliana427/ENVS-193DS_homework-03.git
 
-# Set up
-
-```{r}
+```{r message=FALSE, echo=FALSE}
 library(tidyverse)
 library(here)
 library(flextable)
@@ -31,9 +23,7 @@ library(dplyr)
 
 <div style="font-size:30px; font-weight:bold;">Problem 1. Personal data</div>
 
-# Problem 1
-
-## a.  Data summarizing
+a.  Data summarizing
 
 I am comparing counts between groups, the "yes" on the phone group and
 the "no" on the phone group because I am comparing the number of minutes
@@ -42,7 +32,7 @@ talking on the phone or not, which is informative because theoretically
 I think I walk slower when I am on the phone because I am less focused
 on walking. I will take the median of each group, which will allow the data to not be impacted by outliers, and also the minimum, maximum, first quartile, and third tile of each group's walk times (minutes) and compare them.
 
-## b.  Visualization
+b.  Visualization
 
 ```{r message=FALSE, echo=FALSE}
 library(janitor)
@@ -114,7 +104,7 @@ group_by(on_the_phone) |> # group by yes or no on the phone
 data_summary # display the data summary
 ```
 
-## c.  Caption
+c.  Caption
 
 **Figure 1. Talking on the phone tends to make me take longer to walk to
 the IV tunnel from my house.** Data from 'my_data' package (Shandalov
@@ -123,7 +113,7 @@ me to walk to the IV tunnel and plotted based on whether I was on the
 phone or not (total n = 30). Colors represent if I was on the phone and
 if I was not on the phone (red: no, green: yes).
 
-## d.  Table presentation
+d.  Table presentation
 
 ```{r warning=FALSE}
 data_summary_rounded <- data_summary |> # creating new object for rounded data
@@ -140,8 +130,6 @@ ft # display the flextable
 ```
 
 <div style="font-size:30px; font-weight:bold;">Problem 2. Affective visualization</div>
-
-# Problem 2
 
 a.  Describe in words what an affective visualization could look like
     for your personal data
@@ -164,56 +152,3 @@ I spoke to An at office hours and she told me I didn't have to do a sketch becau
 c.
 
 ![Walk photo](shoevisualization.jpg){width="30%"}
-
-d.  Artist statement
-
-In my piece, the shoe colored in at various points, I represented the
-minutes it took me to walk from home to the IV tunnel on the same route
-depending on if I am on the phone (green) or not on the phone (red),
-which I created by drawing on the bottom of a shoe. I was inspired by
-the creativity in Stefanie Posavec and Giorgia Lupi's Dear Data project,
-so I wanted to do something really creative as well. Lorraine
-Woodruff-Long's quilt inspired me to separate my data by different
-colors and correlate my placement to my data points.
-
-<div style="font-size:30px; font-weight:bold;">Problem 3. Statistical critique</div>
-
-a.  Revisit and summarize
-
-The statistical test used were a t-test and a Mann-Whitney U test. The
-response variable is the shed of the Marburg virus, and the predictor
-variable is based in the coinfection, testing if the bats are infected
-with only the Marburg virus (MARV), both Sosuga virus (SOSV) and MARV,
-or both Kasokero virus (KASV) and MARV.
-
-![Walk photo](chart.png){width="30%"} 
-![Walk photo](legend.png){width="30%"}
-
-Figure 7 D represents the data well.
-
-b.  Visual clarity
-
-This graph is clear because the x-axis and y-axis titles are large and
-easy to read, although the axes titles might be a little long. There is
-no title for the graph, but there is a legend (shown in separate image)
-that is easy to follow to understand what's happening on the graph. The
-orange and blue dots are clear in their differentiation, but I think
-instead of circles for the supershedders there could have been a more
-different shape used.
-
-c.  Aesthetic clarity
-
-The design looks good because the supershedders are shown at the
-beginning, and the other points are shown at the end of the curve. The
-axes ticks are proportionally spaced and the text is large and clear.
-The aesthetics are not too complicated, which is a good thing.
-
-d. Recommendations
-
-I would recommend making the axes titles shorter, for example by
-changing the word percentage to %. Adding a title would be helpful so we
-can look at the graph and know exactly what's going on. The supershedder
-shapes should be different shapes than circles to create more
-differentiation between that and the other points. Everything else on
-the graph looks pretty clear, so I don't think there's anything else I
-would change.
