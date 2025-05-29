@@ -90,8 +90,6 @@ group_by(on_the_phone) |> # group by yes or no on the phone
             ci_lower = mean - tval*se, # find the lower bound confidence interval for both categories
             ci_higher = mean + tval*se) # find the upper bound confidence interval for both categories
 
-data_summary # view the data summary in the console which displays all these values
-
 ```
 
 
@@ -126,7 +124,7 @@ data_summary_rounded <- data_summary |> # creating new object for rounded data
 
 ft <- flextable(head(data_summary_rounded), # create flextable from the rounded data
                 col_keys = c("on_the_phone", "minimum", "q1", "median", "3", "maximum")) |> # make the column categories this variables 
-  set_header_labels(mean = "Median", on_the_phone = "On the phone", q1 = "First quartile", q3 = "Third quartile", minimum = "Minimum", maximum = "Maximum") |> # change the names of the columns in the flextable
+  set_header_labels(median = "Median", on_the_phone = "On the phone", q1 = "First quartile", q3 = "Third quartile", minimum = "Minimum", maximum = "Maximum") |> # change the names of the columns in the flextable
   autofit() # fit the flextable to the page
 
  ft <- set_caption(ft, caption = "Table 1: Walking Data Summary") # add a table to the flextable
